@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — Rishi Boppana</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Times New Roman', Times, serif; background: #e8e8e8; color: #000; font-size: 10.5pt; }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: #fff; border-bottom: 1px solid #ddd;
+      height: 54px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.8rem; font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .toolbar-left { display: flex; align-items: center; gap: 0.9rem; }
+    .back-link {
+      display: flex; align-items: center; gap: 0.35rem;
+      text-decoration: none; color: #4b5563; font-size: 0.85rem; font-weight: 500;
+      padding: 0.38rem 0.75rem; border-radius: 6px; border: 1px solid #e4e7ec;
+      transition: all 0.18s ease;
+    }
+    .back-link:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+    .toolbar-title { font-size: 0.85rem; font-weight: 500; color: #6b7280; }
+    .toolbar-right { display: flex; gap: 0.5rem; }
+    .tbtn {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.42rem 1rem; border-radius: 6px;
+      font-weight: 600; font-size: 0.83rem; cursor: pointer;
+      transition: all 0.18s ease; border: none;
+    }
+    .tbtn-primary { background: #2563eb; color: #fff; }
+    .tbtn-primary:hover { background: #1d4ed8; }
+    .tbtn-ghost { background: #fff; color: #4b5563; border: 1px solid #e4e7ec; }
+    .tbtn-ghost:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+
+    /* ── Resume wrapper ── */
+    .resume-outer { padding: 74px 1.5rem 3rem; display: flex; justify-content: center; }
+    .resume {
+      width: 760px;
+      background: #fff;
+      box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+      padding: 0.7in 0.75in 0.7in;
+    }
+
+    /* ── Header ── */
+    .r-name {
+      text-align: center; font-size: 20pt; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; color: #000;
+      margin-bottom: 3pt;
+    }
+    .r-contact {
+      text-align: center; font-size: 9pt; color: #000;
+      margin-bottom: 8pt; line-height: 1.5;
+    }
+    .r-contact a { color: #000; text-decoration: none; }
+    .r-contact a:hover { text-decoration: underline; }
+    .r-contact span { margin: 0 2pt; }
+
+    /* ── Section ── */
+    .r-sec { margin-bottom: 7pt; }
+    .r-sec-title {
+      font-size: 10pt; font-weight: 700; color: #1a56db;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      border-bottom: 1.5px solid #1a56db;
+      padding-bottom: 1.5pt; margin-bottom: 5pt;
+    }
+
+    /* ── Summary ── */
+    .r-summary { font-size: 9.5pt; line-height: 1.5; color: #000; }
+
+    /* ── Skills ── */
+    .r-skills-block { font-size: 9.5pt; line-height: 1.65; }
+    .r-skill-line { margin-bottom: 1pt; }
+    .r-skill-line b { color: #000; }
+
+    /* ── Experience ── */
+    .r-exp-item { margin-bottom: 7pt; }
+    .r-exp-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 2pt;
+    }
+    .r-exp-left { font-size: 9.5pt; }
+    .r-exp-title { font-weight: 700; color: #000; }
+    .r-exp-sep { color: #000; margin: 0 2pt; }
+    .r-exp-company { font-weight: 700; color: #1a56db; }
+    .r-exp-loc { color: #000; }
+    .r-exp-date { font-size: 9pt; color: #000; font-style: italic; white-space: nowrap; flex-shrink: 0; margin-left: 8pt; }
+    .r-bullets { list-style: none; padding-left: 10pt; }
+    .r-bullets li {
+      font-size: 9.5pt; color: #000; line-height: 1.5;
+      margin-bottom: 1.5pt; position: relative;
+    }
+    .r-bullets li::before { content: '•'; position: absolute; left: -9pt; color: #000; }
+
+    /* ── Projects ── */
+    .r-proj-item { margin-bottom: 7pt; }
+    .r-proj-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 2pt;
+    }
+    .r-proj-title { font-weight: 700; font-size: 9.5pt; color: #000; }
+    .r-proj-stack { font-weight: 400; color: #000; font-size: 9.5pt; }
+    .r-proj-date { font-size: 9pt; color: #000; font-style: italic; white-space: nowrap; flex-shrink: 0; margin-left: 8pt; }
+
+    /* ── Education ── */
+    .r-edu-item { margin-bottom: 4pt; }
+    .r-edu-head { display: flex; justify-content: space-between; align-items: baseline; }
+    .r-edu-degree { font-size: 9.5pt; font-weight: 700; color: #000; }
+    .r-edu-date { font-size: 9pt; color: #000; font-style: italic; white-space: nowrap; flex-shrink: 0; margin-left: 8pt; }
+    .r-edu-school { font-size: 9.5pt; color: #1a56db; font-weight: 700; }
+
+    /* ── Certifications ── */
+    .r-cert-row { font-size: 9.5pt; line-height: 1.65; }
+    .r-cert-row b { color: #000; }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .resume-outer { padding: 0; }
+      .resume {
+        box-shadow: none; width: 100%;
+        padding: 0.5in 0.7in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <a class="back-link" href="index.html">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Portfolio
+    </a>
+    <span class="toolbar-title">Rishi Boppana — Resume</span>
+  </div>
+  <div class="toolbar-right">
+    <button class="tbtn tbtn-ghost" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print
+    </button>
+    <button class="tbtn tbtn-primary" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download PDF
+    </button>
+  </div>
+</div>
+
+<div class="resume-outer">
+<div class="resume">
+
+  <!-- ── HEADER ── -->
+  <div class="r-name">Rishi Boppana</div>
+  <div class="r-contact">
+    <a href="https://www.linkedin.com/in/rishi-boppana/">linkedin.com/in/Rishi-Boppana</a>
+    <span>|</span>
+    <a href="https://github.com/rishiboppana">github.com/Rishi</a>
+    <span>|</span>
+    (650) 761-3864
+    <span>|</span>
+    <a href="mailto:rishivisweswar.boppana@sjsu.edu">rishivisweswar.boppana@sjsu.edu</a>
+    <span>|</span>
+    California, USA
+  </div>
+
+  <!-- ── PROFESSIONAL SUMMARY ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Professional Summary</div>
+    <div class="r-summary">
+      Graduate student at San Jose State University (GPA: 3.8/4.0) with hands-on experience building agentic AI systems, end-to-end ML pipelines, and scalable data engineering workflows. Proficient in Python, LangChain, LangGraph, Apache Airflow, and AWS. Seeking full-time roles in Data Analytics, Data Engineering, AI/ML Engineering, or Software Development.
+    </div>
+  </div>
+
+  <!-- ── TECHNICAL SKILLS ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Technical Skills</div>
+    <div class="r-skills-block">
+      <div class="r-skill-line"><b>AI &amp; Machine Learning:</b> LangChain, LangGraph, RAG, Transformers, LoRA Fine-Tuning, MCP, Tool Calling, MLflow, A/B Testing</div>
+      <div class="r-skill-line"><b>Data Engineering:</b> Apache Airflow, dbt, Kafka, Snowflake, Redshift, ETL/ELT, PostgreSQL, MySQL, MongoDB, Redis, Pinecone</div>
+      <div class="r-skill-line"><b>Cloud &amp; MLOps:</b> AWS (EC2, S3, Lambda, ECS, IAM), Docker, Kubernetes, FastAPI, CI/CD Pipelines, Model Monitoring</div>
+      <div class="r-skill-line"><b>Programming &amp; Web:</b> Python, SQL, C, JavaScript, React, Redux, NodeJS, Flask, REST API</div>
+    </div>
+  </div>
+
+  <!-- ── EXPERIENCE ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Experience</div>
+
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-exp-left">
+          <span class="r-exp-title">Machine Learning Engineer</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-company">Nexed</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-loc">California, USA</span>
+        </div>
+        <div class="r-exp-date">June 2025 – August 2025</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Fine-tuned a domain-specific LLM on proprietary product data using LoRA, reducing training time by 18% and significantly improving story output consistency across automated 3–5 cycle review pipelines.</li>
+        <li>Architected agentic writer–reviewer workflows using LangChain and LangGraph, enabling fully autonomous iterative story refinement and cutting manual editing overhead by ~40%.</li>
+        <li>Built an end-to-end AI video generation pipeline integrating story generation, LLM-based quality evaluation, and video synthesis into a single seamless automated system.</li>
+        <li>Integrated Wav2Lip and SadTalker for real-time lip-sync and facial animation, eliminating 35% of post-production work per video and improving final output realism.</li>
+        <li>Evaluated generation quality using automated A/B testing pipelines, iterating on prompt templates and model checkpoints to continuously improve story coherence and factual consistency.</li>
+      </ul>
+    </div>
+
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-exp-left">
+          <span class="r-exp-title">Data Science Intern</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-company">Innominds Ltd (Qualcomm POC)</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-loc">Hyderabad, India</span>
+        </div>
+        <div class="r-exp-date">Jun 2023 – Aug 2023</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Increased LiDAR object detection range by 25% and reduced system latency by 15% by redesigning Python-based sensor processing pipelines for a high-priority Qualcomm proof-of-concept.</li>
+        <li>Developed RANSAC and DBSCAN clustering modules for real-time 3D point cloud segmentation, advancing autonomous vehicle perception under noisy sensor environments.</li>
+        <li>Boosted overall model detection accuracy by 27% through systematic signal filtering, feature engineering, and targeted hyperparameter tuning.</li>
+        <li>Collaborated directly with Qualcomm engineers to align pipeline outputs with hardware constraints, documenting performance benchmarks and presenting results to senior stakeholders.</li>
+      </ul>
+    </div>
+
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-exp-left">
+          <span class="r-exp-title">Instructional Student Assistant (ISA)</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-company">San Jose State University</span>
+        </div>
+        <div class="r-exp-date">Aug 2025 – Present</div>
+      </div>
+      <div style="font-size:9pt; color:#000; margin-bottom:2pt; padding-left:10pt; font-style:italic;">Data 220: Applied Mathematics &nbsp;|&nbsp; Instructor: Prof. Jung Suh</div>
+      <ul class="r-bullets">
+        <li>Supported 45+ graduate students per semester in core topics including Probability, Statistics, and Linear Algebra applied to data science and ML workflows.</li>
+        <li>Designed lab exercises and problem sets that bridge mathematical foundations with practical AI tool usage, reflecting real industry workflows.</li>
+        <li>Held weekly office hours, graded all assignments with detailed feedback, and collaborated with Prof. Jung Suh to update course rubrics aligned with recent advancements in applied mathematics and AI.</li>
+      </ul>
+    </div>
+
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-exp-left">
+          <span class="r-exp-title">Teaching Associate</span>
+          <span class="r-exp-sep">|</span>
+          <span class="r-exp-company">San Jose State University</span>
+        </div>
+        <div class="r-exp-date">Jan 2026 – Present</div>
+      </div>
+      <div style="font-size:9pt; color:#000; margin-bottom:2pt; padding-left:10pt; font-style:italic;">CMPE 146: Embedded Systems &nbsp;|&nbsp; Instructor: Prof. Bhawandeep Harsh</div>
+      <ul class="r-bullets">
+        <li>Conducted weekly lab sessions guiding students through hands-on embedded system implementation using microcontroller development boards and sensor modules.</li>
+        <li>Assisted students in debugging low-level C/C++ code and resolving hardware interfacing issues, improving lab completion rates and comprehension of real-time system concepts.</li>
+        <li>Evaluated assignments, provided constructive feedback, and coordinated with Prof. Bhawandeep Harsh to align lab content with industry-relevant embedded design patterns.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ── PROJECTS ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Projects</div>
+
+    <div class="r-proj-item">
+      <div class="r-proj-head">
+        <div><span class="r-proj-title">Airbnb Clone — Full-Stack Travel Platform</span><span class="r-proj-stack"> &nbsp;|&nbsp; React · NodeJS · LangChain · Tavily · PostgreSQL · AWS</span></div>
+        <div class="r-proj-date">Oct – Nov 2025</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Engineered a full-stack vacation-rental platform with separate owner and guest dashboards, real-time listing management, and booking flows; load-tested with JMeter to sustain 200 req/s and 5,000 concurrent users.</li>
+        <li>Integrated a personalized AI travel-planning agent powered by LangChain that ingests user profiles, booking history, and live location data via Tavily API to generate dynamic, real-time itineraries.</li>
+        <li>Implemented JWT-based authentication, role-based access control, and PostgreSQL-backed data persistence, ensuring secure multi-user session management across the platform.</li>
+        <li>Optimized database queries with indexed lookups and connection pooling, tuning critical booking API response times to under 120ms at peak load.</li>
+      </ul>
+    </div>
+
+    <div class="r-proj-item">
+      <div class="r-proj-head">
+        <div><span class="r-proj-title">Kayak Agentic Website — Dual-Agent Travel Search</span><span class="r-proj-stack"> &nbsp;|&nbsp; LangGraph · Redis · FastAPI · AWS EC2</span></div>
+        <div class="r-proj-date">Aug – Sep 2025</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Designed a two-agent LangGraph system: Agent 1 parses natural-language queries into structured intents and constraints; Agent 2 queries internal flight, hotel, and car datasets via tool calls with Redis caching, cutting repeated lookups by ~60%.</li>
+        <li>Built a FastAPI microservices backend deployed on AWS EC2 with auto-scaling and load balancing, achieving 99.9% uptime and a 40% reduction in peak server load over a single-instance baseline.</li>
+        <li>Implemented intelligent query routing, result ranking, and context-aware follow-up handling, enabling multi-turn conversational search with consistent, accurate responses.</li>
+      </ul>
+    </div>
+
+    <div class="r-proj-item">
+      <div class="r-proj-head">
+        <div><span class="r-proj-title">Asteroid Analytics — Near-Earth Object Prediction System</span><span class="r-proj-stack"> &nbsp;|&nbsp; Python · Airflow · Snowflake · dbt · MLflow</span></div>
+        <div class="r-proj-date">Mar – Jun 2025</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Automated ingestion and processing of 730 days of NASA NEO trajectory data into Snowflake using Apache Airflow, enabling continuous real-time asteroid monitoring and historical trend analysis.</li>
+        <li>Authored 4 custom dbt macros for ELT automation and trajectory forecasting; enforced 100% data quality through comprehensive dbt schema tests, data validations, and anomaly detection checks.</li>
+        <li>Tracked and versioned all forecasting model experiments with MLflow, enabling reproducible runs and systematic comparison of prediction accuracy across model iterations.</li>
+      </ul>
+    </div>
+
+    <div class="r-proj-item">
+      <div class="r-proj-head">
+        <div><span class="r-proj-title">Multimodal RAG Assistant</span><span class="r-proj-stack"> &nbsp;|&nbsp; LangChain · FAISS · GPT-4V · CLIP · Gradio</span></div>
+        <div class="r-proj-date">2025</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Built a Retrieval-Augmented Generation pipeline using LangChain and FAISS over multi-format documents including PDFs, images, and structured tables, with CLIP and GPT-4V enabling image-based queries.</li>
+        <li>Deployed as a Gradio web app with real-time multi-turn conversation, per-response source attribution, and a retrieval trace panel for full explainability.</li>
+      </ul>
+    </div>
+
+    <div class="r-proj-item">
+      <div class="r-proj-head">
+        <div><span class="r-proj-title">LLM Fine-Tuning &amp; Evaluation Framework</span><span class="r-proj-stack"> &nbsp;|&nbsp; Mistral-7B · LLaMA-2 · LoRA · PEFT · MLflow</span></div>
+        <div class="r-proj-date">2026</div>
+      </div>
+      <ul class="r-bullets">
+        <li>Fine-tuned Mistral-7B and LLaMA-2 on domain-specific datasets using LoRA and PEFT, reducing training compute by 60% while preserving task accuracy.</li>
+        <li>Built an automated MLflow evaluation pipeline tracking BLEU, ROUGE-L, and perplexity per checkpoint, with a modular prompt benchmarking suite covering zero-shot, few-shot, and instruction-tuned configurations.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ── EDUCATION ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Education</div>
+
+    <div class="r-edu-item">
+      <div class="r-edu-head">
+        <div>
+          <span class="r-edu-degree">Master of Science in Data Analytics — GPA: 3.8 / 4.0</span>
+          <span style="font-size:9.5pt; color:#000;"> &nbsp;|&nbsp; </span>
+          <span class="r-edu-school">San Jose State University, California</span>
+        </div>
+        <div class="r-edu-date">Jan 2025 – Dec 2027</div>
+      </div>
+    </div>
+
+    <div class="r-edu-item">
+      <div class="r-edu-head">
+        <div>
+          <span class="r-edu-degree">B.Tech in Computer Science &amp; Engineering</span>
+          <span style="font-size:9.5pt; color:#000;"> &nbsp;|&nbsp; </span>
+          <span class="r-edu-school">Mahindra University, Hyderabad</span>
+        </div>
+        <div class="r-edu-date">Oct 2020 – Jun 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <div class="r-sec">
+    <div class="r-sec-title">Certifications</div>
+    <div class="r-cert-row">
+      <b>AWS Certified Cloud Practitioner</b> — Amazon Web Services, Jul 2025 &nbsp;&nbsp;&nbsp;
+      <b>Supervised Machine Learning: Regression &amp; Classification</b> — Coursera, Jul 2022
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
