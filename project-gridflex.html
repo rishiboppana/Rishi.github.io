@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridFlex — Clean Energy Scheduler · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-blue">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 07 · Oct 2026 – Present</p>
+    <h1 class="big">GridFlex — Clean Energy Scheduler</h1>
+    <p class="lead">Moves flexible data-center jobs to the hours and places where the US grid has spare solar and wind. We don&#x27;t create clean energy, we stop wasting it.</p>
+    <div class="chips"><span class="chip">Airflow</span><span class="chip">PostgreSQL</span><span class="chip">XGBoost</span><span class="chip">LangGraph</span><span class="chip">Llama 3.1</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Docker</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>The problem</h3><p>Grids curtail (throw away) solar and wind power when supply beats demand. Data-center work that can wait could use it instead. Energy does not move, but work can.</p></div>
+      <div class="block fi"><h3>Live data pipeline</h3><p>Airflow DAGs pull hourly EIA data for 8 US grids into Postgres (Docker), with a 2-year backfill. Fuel-mix data arrives about 20 hours late, so recent hours are nowcast and clearly labeled as estimates.</p></div>
+      <div class="block fi"><h3>Forecasting</h3><p>XGBoost models give P10/P50/P90 forecasts of solar, wind and demand per grid, using weather weighted by real plant locations. On PJM, ERCOT and MISO they cut error by about 50–60% versus a same-hour baseline.</p></div>
+      <div class="block fi"><h3>Scheduler &amp; ledger</h3><p>A 48-hour rolling plan places jobs on surplus hours; leftover surplus pre-chills cooling or runs filler work, and a ledger accounts for every MWh. Currently tested on simulated surplus.</p></div>
+      <div class="block fi"><h3>AI job chat</h3><p>Describe a job in plain words and a LangGraph agent (Llama 3.1 8B) returns a min/typical/max energy estimate and where it could run. Numbers always come from code, never the LLM, with guardrails against prompt injection.</p></div>
+      <div class="block fi"><h3>Map</h3><p>A 3D globe with real day/night and a flat US map of 10 data-center hubs, colored by how much surplus each can absorb.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-plantlens.html">← PlantLens</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana/Clean-Energy" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-graph-rag.html">Multimodal Graph RAG Assistant →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>

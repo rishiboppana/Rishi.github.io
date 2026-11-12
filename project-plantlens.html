@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlantLens — Plant Health Assistant · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-green">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 06 · Oct 2026</p>
+    <h1 class="big">PlantLens — Plant Health Assistant</h1>
+    <p class="lead">Snap a photo of a sick plant and get the likely causes, checked against a knowledge base instead of guessed.</p>
+    <div class="chips"><span class="chip">Qwen3-VL</span><span class="chip">Gemma</span><span class="chip">Llama</span><span class="chip">RAG</span><span class="chip">Python</span><span class="chip">JavaScript</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>The problem</h3><p>Plant owners can rarely tell what is wrong from a photo, and general chatbots answer confidently even when they are guessing.</p></div>
+      <div class="block fi"><h3>How it works</h3><p>A router sends each message down the right path. For a photo, the vision model lists symptoms, each symptom is re-checked against the image, a local knowledge base is searched, and the reply gives 2–4 possible causes. Next steps and sources are written by code from the retrieved records, not from model memory.</p></div>
+      <div class="block fi"><h3>Honest plant ID</h3><p>Three looks from Qwen3-VL plus votes from Gemma and Llama. Confidence is high only when every model family agrees; otherwise it asks you to confirm instead of inventing a name.</p></div>
+      <div class="block fi"><h3>Guardrails</h3><p>Care answers must cite a knowledge-base record that actually supports them (numbers checked in code, wording by a second model call). If none exists it searches trusted sites and links them, or says it cannot confirm.</p></div>
+      <div class="block fi"><h3>Extras</h3><p>Yes/no follow-up questions mark a diagnosis confirmed, likely or undetermined. Also a plant journal, progress between check-ups, a weather-impact check and streaming replies. MIT licensed, can run fully local with Ollama or vLLM, offline tests in CI.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-asteroid.html">← Asteroid Analytics</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana/plantHelp" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-gridflex.html">GridFlex →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>
