@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multimodal Graph RAG Assistant · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-violet">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 01 · 2025</p>
+    <h1 class="big">Multimodal Graph RAG Assistant</h1>
+    <p class="lead">A question-answering assistant that understands how ideas in a document connect, not just which words match.</p>
+    <div class="chips"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Neo4j</span><span class="chip">GPT-4V</span><span class="chip">CLIP</span><span class="chip">Reranking</span><span class="chip">Gradio</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>The problem</h3><p>Standard vector RAG fails on complex documents where entities and concepts are deeply interconnected. It needed hybrid retrieval: dense vector search plus structured knowledge-graph traversal.</p></div>
+      <div class="block fi"><h3>Graph RAG architecture</h3><p>Neo4j stores entities and relationships extracted from documents alongside a FAISS vector index, enabling multi-hop reasoning and relationship-aware retrieval that flat vector search cannot do.</p></div>
+      <div class="block fi"><h3>Reranking pipeline</h3><p>Candidates from FAISS and Neo4j are scored by a cross-encoder reranker and fused before reaching GPT-4, significantly improving precision on complex multi-entity queries.</p></div>
+      <div class="block fi"><h3>Multimodal layer</h3><p>CLIP image embeddings and GPT-4V visual question answering extend retrieval across PDFs, images and tables.</p></div>
+      <div class="block fi"><h3>Deployment</h3><p>A Gradio web app with multi-turn conversation, source attribution per answer, and a trace panel showing which graph paths and vector chunks contributed.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-asteroid.html">← Asteroid Analytics</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-llm-finetune.html">LLM Fine-Tuning &amp; Evaluation Framework →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kayak Agentic Travel Search · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-teal">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 03 · Aug – Sep 2025</p>
+    <h1 class="big">Kayak Agentic Travel Search</h1>
+    <p class="lead">Type what you want in plain English; two cooperating agents find the flights, hotels and cars.</p>
+    <div class="chips"><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">Redis</span><span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">AWS EC2</span><span class="chip">MCP</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>Dual-agent design</h3><p>Agent 1 parses natural-language queries into structured intents using MCP tool-calling; Agent 2 retrieves flights, hotels and cars from a multi-database backend, with Redis caching cutting repeated lookups by ~60%.</p></div>
+      <div class="block fi"><h3>Microservices</h3><p>Independent FastAPI services for Query, Search, Cache and User, each with its own store: MySQL for bookings, MongoDB for travel content, Redis for sessions and hot-path caching.</p></div>
+      <div class="block fi"><h3>Infrastructure</h3><p>Deployed on AWS EC2 with auto-scaling and an Application Load Balancer, reaching 99.9% uptime and 40% lower peak server load.</p></div>
+      <div class="block fi"><h3>Conversational refinement</h3><p>Multi-turn context tracking and reranking let users say “make it cheaper” or “only direct flights” without restating everything.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-llm-finetune.html">← LLM Fine-Tuning &amp; Evaluation Framework</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-airbnb.html">Airbnb Clone →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>

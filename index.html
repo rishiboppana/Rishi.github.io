@@ -4,745 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rishi Visweswar Boppana</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:       #ffffff;
-      --bg2:      #f7f8fa;
-      --bg3:      #f0f2f5;
-      --border:   #e4e7ec;
-      --text:     #0f0f0f;
-      --sub:      #4b5563;
-      --muted:    #9ca3af;
-      --accent:   #2563eb;
-      --accent-h: #1d4ed8;
-      --accent-l: #eff6ff;
-      --accent-b: #bfdbfe;
-      --green:    #16a34a;
-      --green-l:  #f0fdf4;
-      --purple:   #7c3aed;
-      --purple-l: #f5f3ff;
-      --orange:   #ea580c;
-      --orange-l: #fff7ed;
-      --radius:   12px;
-      --t:        0.2s ease;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 17px; }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg2); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      height: 60px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem;
-    }
-    .nav-brand { font-weight: 800; font-size: 1rem; color: var(--accent); text-decoration: none; letter-spacing: -0.5px; }
-    .nav-links { display: flex; gap: 0.3rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--sub); font-size: 0.88rem; font-weight: 500;
-      padding: 0.4rem 0.85rem; border-radius: 7px; transition: all var(--t);
-    }
-    .nav-links a:hover { background: var(--accent-l); color: var(--accent); }
-    .nav-resume-btn {
-      background: var(--accent); color: #fff !important;
-      padding: 0.4rem 1rem !important; border-radius: 7px;
-    }
-    .nav-resume-btn:hover { background: var(--accent-h) !important; color: #fff !important; }
-
-    /* ── Page layout ── */
-    .page { max-width: 1060px; margin: 0 auto; padding: 0 2.5rem; }
-
-    /* ── Hero ── */
-    .hero {
-      padding-top: 120px; padding-bottom: 80px;
-      display: grid; grid-template-columns: 1fr 400px; gap: 6rem; align-items: start;
-    }
-    .hero-eyebrow {
-      font-size: 0.78rem; font-weight: 700; color: var(--accent);
-      letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem;
-    }
-    .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
-    h1.hero-name {
-      font-size: 3.8rem; font-weight: 800; line-height: 1.0;
-      letter-spacing: -2.5px; color: var(--text); margin-bottom: 0.4rem;
-    }
-    h1.hero-name span { color: var(--accent); }
-    .hero-role { font-size: 1.05rem; color: var(--sub); font-weight: 500; margin-bottom: 2rem; }
-    .hero-bio { font-size: 1.08rem; color: var(--sub); line-height: 1.9; margin-bottom: 1.8rem; }
-    .hero-bio strong { color: var(--text); font-weight: 700; }
-    .hero-bio p + p { margin-top: 1rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2rem; }
-    .tag-pill {
-      font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.8rem;
-      border-radius: 99px; border: 1.5px solid var(--border);
-      color: var(--sub); background: var(--bg2); transition: all var(--t);
-    }
-    .tag-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-l); }
-    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .btn {
-      padding: 0.65rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem;
-      text-decoration: none; transition: all var(--t);
-      display: inline-flex; align-items: center; gap: 0.4rem;
-    }
-    .btn-solid { background: var(--accent); color: #fff; }
-    .btn-solid:hover { background: var(--accent-h); }
-    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-l); }
-
-    /* Section nav boxes */
-    .section-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .snav-box {
-      display: flex; flex-direction: column; justify-content: space-between;
-      background: var(--bg2); border: 1.5px solid var(--border);
-      border-radius: var(--radius); padding: 1.4rem 1.5rem;
-      text-decoration: none; min-height: 90px;
-      transition: all var(--t);
-    }
-    .snav-box:hover {
-      border-color: var(--accent); background: var(--accent-l);
-      transform: translateY(-2px); box-shadow: 0 4px 20px rgba(37,99,235,0.1);
-    }
-    .snav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-    .snav-arrow { display: flex; justify-content: flex-end; margin-top: 1rem; }
-    .snav-arrow svg { width: 17px; height: 17px; color: var(--muted); transition: all var(--t); }
-    .snav-box:hover .snav-arrow svg { color: var(--accent); transform: translate(2px,-2px); }
-    .snav-span2 { grid-column: span 2; }
-
-    /* ── Section divider ── */
-    .sec-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* ── Section ── */
-    .sec { padding: 5.5rem 0; }
-    .sec-label {
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 2.5rem;
-    }
-
-    /* ── Education ── */
-    .edu-list { display: flex; flex-direction: column; gap: 2rem; }
-    .edu-item {}
-    .edu-degree { font-size: 1.25rem; font-weight: 700; color: var(--text); }
-    .edu-school { font-size: 1rem; color: var(--accent); font-weight: 600; margin: 0.3rem 0 0.2rem; }
-    .edu-meta { font-size: 0.9rem; color: var(--muted); }
-    .edu-gpa {
-      display: inline-block; margin-top: 0.5rem;
-      font-size: 0.8rem; font-weight: 700; color: var(--accent);
-      background: var(--accent-l); border: 1.5px solid var(--accent-b);
-      padding: 0.2rem 0.7rem; border-radius: 99px;
-    }
-
-    /* ── Experience ── */
-    .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
-    .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; }
-    .exp-date { font-size: 0.85rem; color: var(--muted); font-weight: 600; padding-top: 0.25rem; line-height: 1.5; }
-    .exp-content { border-left: 2px solid var(--border); padding-left: 1.5rem; }
-    .exp-title { font-size: 1.15rem; font-weight: 700; color: var(--text); }
-    .exp-org { font-size: 0.95rem; color: var(--accent); font-weight: 600; margin: 0.2rem 0 0.65rem; }
-    .exp-bullets { list-style: none; }
-    .exp-bullets li { font-size: 0.97rem; color: var(--sub); padding: 0.22rem 0 0.22rem 1.1rem; position: relative; line-height: 1.7; }
-    .exp-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
-    .chip {
-      font-size: 0.75rem; font-weight: 600; padding: 0.22rem 0.65rem;
-      border-radius: 99px; border: 1.5px solid;
-    }
-    .chip-blue   { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
-    .chip-purple { background: #f5f3ff; color: #7c3aed; border-color: #ddd6fe; }
-    .chip-green  { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
-    .chip-orange { background: #fff7ed; color: #ea580c; border-color: #fed7aa; }
-    .chip-gray   { background: var(--bg2); color: var(--sub); border-color: var(--border); }
-
-    /* ── Projects ── */
-    .proj-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .proj-item {
-      border: 1.5px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; background: var(--bg);
-      transition: border-color var(--t), box-shadow var(--t);
-    }
-    .proj-item:hover { border-color: var(--accent-b); }
-    .proj-item.open { border-color: var(--accent); box-shadow: 0 2px 16px rgba(37,99,235,0.08); }
-    .proj-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 1.4rem; cursor: pointer; user-select: none;
-      transition: background var(--t);
-    }
-    .proj-header:hover { background: var(--bg2); }
-    .proj-left { display: flex; align-items: center; gap: 1rem; }
-    .proj-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    .proj-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-    .proj-stack { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
-    .proj-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
-    .proj-year { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
-    .chevron { width: 18px; height: 18px; color: var(--muted); transition: transform var(--t); }
-    .proj-item.open .chevron { transform: rotate(180deg); color: var(--accent); }
-    .proj-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1); }
-    .proj-item.open .proj-body { max-height: 600px; }
-    .proj-body-inner { padding: 1.1rem 1.4rem 1.4rem; border-top: 1px solid var(--border); background: var(--bg2); }
-    .proj-bullets { list-style: none; margin-bottom: 1rem; }
-    .proj-bullets li { font-size: 0.95rem; color: var(--sub); padding: 0.22rem 0 0.22rem 1.1rem; position: relative; line-height: 1.7; }
-    .proj-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
-    .proj-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.7rem; }
-    .gh-link {
-      font-size: 0.85rem; font-weight: 600; text-decoration: none; color: var(--accent);
-      display: flex; align-items: center; gap: 0.35rem; transition: color var(--t);
-    }
-    .gh-link:hover { color: var(--accent-h); }
-
-    /* ── Visualization ── */
-    .viz-wrap { display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: start; }
-    .viz-title { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 0.7rem; }
-    .viz-desc { font-size: 1rem; color: var(--sub); line-height: 1.8; margin-bottom: 1.1rem; }
-    .viz-bullets { list-style: none; margin-bottom: 1.2rem; }
-    .viz-bullets li { font-size: 0.97rem; color: var(--sub); padding: 0.22rem 0 0.22rem 1.1rem; position: relative; line-height: 1.6; }
-    .viz-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
-    .tableau-frame-wrap {
-      border: 1.5px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; background: var(--bg2);
-      position: relative;
-    }
-    .tableau-frame-wrap iframe {
-      display: block; width: 100%; height: 320px; border: none;
-    }
-    .tableau-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(255,255,255,0.95));
-      padding: 1.5rem 1.2rem 1.1rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .tableau-label { font-size: 0.82rem; font-weight: 600; color: var(--sub); }
-    .tableau-open {
-      font-size: 0.82rem; font-weight: 700; color: var(--accent);
-      text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
-      transition: color var(--t);
-    }
-    .tableau-open:hover { color: var(--accent-h); }
-
-    /* ── Certifications ── */
-    .cert-list { display: flex; flex-direction: column; gap: 1.4rem; }
-    .cert-item { display: flex; align-items: flex-start; gap: 1rem; }
-    .cert-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      border: 1.5px solid var(--border); background: var(--bg2);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 1.1rem;
-    }
-    .cert-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-    .cert-issuer { font-size: 0.88rem; color: var(--muted); margin-top: 0.15rem; }
-
-    /* ── Contact ── */
-    .contact-wrap {
-      background: var(--bg2); border-radius: 16px; padding: 3rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 2rem;
-    }
-    .contact-hl { font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-    .contact-sub { font-size: 1rem; color: var(--sub); margin-top: 0.3rem; }
-    .contact-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .contact-btn {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.6rem 1.2rem; border-radius: 8px;
-      font-weight: 600; font-size: 0.88rem; text-decoration: none;
-      border: 1.5px solid var(--border); color: var(--sub); background: var(--bg);
-      transition: all var(--t);
-    }
-    .contact-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-l); }
-    .contact-btn svg { width: 16px; height: 16px; }
-
-    /* ── Footer ── */
-    footer { text-align: center; padding: 2.5rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); }
-
-    /* ── Fade-in ── */
-    .fi { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .fi.vis { opacity: 1; transform: none; }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 3rem; }
-      .viz-wrap { grid-template-columns: 1fr; }
-      nav { padding: 0 1.5rem; }
-      .page { padding: 0 1.5rem; }
-    }
-    @media (max-width: 580px) {
-      h1.hero-name { font-size: 2.8rem; letter-spacing: -1.5px; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
-      .nav-links { display: none; }
-      .contact-wrap { padding: 2rem 1.5rem; }
-    }
-  </style>
+  <meta name="description" content="Rishi Visweswar Boppana — Data Scientist and AI Engineer building agentic AI, RAG pipelines and data systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="index.html">Rishi V. Boppana</a>
-  <ul class="nav-links">
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#viz">Visualization</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="resume.html" class="nav-resume-btn">Resume</a></li>
-  </ul>
-</nav>
+<main class="wrap">
 
-<div class="page">
+  <section class="hero">
+    <aside class="profile fi">
+      <div class="photo">
+        <span class="mono" aria-hidden="true">RV</span>
+        <!-- Drop your photo in the repo as photo.jpg -->
+        <img src="photo.jpg" alt="Rishi Visweswar Boppana" onerror="this.remove()" />
+        <span class="hi" aria-hidden="true">Hi 👋</span>
+      </div>
+      <h1 class="p-name">Rishi Visweswar <span>Boppana</span></h1>
+      <p class="p-about">Grad student building agentic AI, RAG pipelines and data systems.</p>
+      <div class="school">
+        <!-- Drop the SJSU logo in the repo as sjsu-logo.png -->
+        <img src="sjsu-logo.png" alt="SJSU logo" onerror="this.remove()" />
+        <div><strong>M.S. Applied Data Intelligence</strong><br>San Jose State University</div>
+      </div>
+      <span class="gpa">GPA 3.75 / 4.0</span>
+      <ul class="contact-list">
+        <li><span>✉</span><a href="mailto:rishivisweswar.boppana@sjsu.edu">rishivisweswar.boppana@sjsu.edu</a></li>
+        <li><span>in</span><a href="https://www.linkedin.com/in/rishi-boppana/" target="_blank" rel="noopener">linkedin.com/in/rishi-boppana</a></li>
+        <li><span>gh</span><a href="https://github.com/rishiboppana" target="_blank" rel="noopener">github.com/rishiboppana</a></li>
+        <li><span>📍</span>San Jose, CA</li>
+      </ul>
+    </aside>
 
-  <!-- ══ HERO ══ -->
-  <div class="hero">
-    <div class="fi">
-      <p class="hero-eyebrow">Data Scientist · Software Engineer</p>
-      <h1 class="hero-name">Rishi<br>Visweswar<br><span>Boppana</span></h1>
-      <p class="hero-role">M.S. Applied Data Intelligence · San Jose State University &nbsp;·&nbsp; GPA 3.7</p>
-      <div class="hero-bio">
-        <p>
-          I'm a grad student at SJSU (GPA 3.7) who builds things at the intersection of AI, distributed systems, and data engineering. I design <strong>agentic AI systems</strong> using MCP and tool-calling frameworks, architect <strong>Graph RAG pipelines</strong> with reranking over knowledge graphs, fine-tune <strong>LLMs</strong> for production use cases, and engineer <strong>distributed microservice platforms</strong> that scale. Whether it's a real-time data pipeline, a multi-agent workflow, or a full-stack AI product — I work across the full stack to ship systems that hold up when it matters.
-        </p>
-      </div>
-      <div class="tags">
-        <span class="tag-pill">Python</span>
-        <span class="tag-pill">Agentic AI & MCP</span>
-        <span class="tag-pill">LLMs & Transformers</span>
-        <span class="tag-pill">RAG & Graph RAG</span>
-        <span class="tag-pill">LangChain / LangGraph</span>
-        <span class="tag-pill">Deep Learning</span>
-        <span class="tag-pill">Apache Kafka</span>
-        <span class="tag-pill">Apache Airflow</span>
-        <span class="tag-pill">Snowflake</span>
-        <span class="tag-pill">Apache Spark</span>
-        <span class="tag-pill">Docker</span>
-        <span class="tag-pill">AWS</span>
-        <span class="tag-pill">Distributed Systems</span>
-        <span class="tag-pill">System Design</span>
-        <span class="tag-pill">React & Node.js</span>
-        <span class="tag-pill">SQL & NoSQL</span>
-        <span class="tag-pill">MLflow</span>
-        <span class="tag-pill">Data Analytics</span>
-        <span class="tag-pill">FastAPI & Microservices</span>
-        <span class="tag-pill">Data Engineering</span>
-      </div>
+    <div class="hero-right fi">
+      <p class="small">Data Scientist · AI Engineer</p>
+      <p class="big">Engineer<br>in this <span class="grad-text">AI</span> era</p>
+      <p class="tag">I design agentic AI, Graph RAG and data systems that hold up in production, and I ship them end to end.</p>
       <div class="hero-btns">
-        <a href="mailto:rishivisweswar.boppana@sjsu.edu" class="btn btn-solid">Get in Touch</a>
-        <a href="https://www.linkedin.com/in/rishi-boppana/" target="_blank" class="btn btn-outline">LinkedIn</a>
-        <a href="https://github.com/rishiboppana" target="_blank" class="btn btn-outline">GitHub</a>
-        <a href="resume.html" class="btn btn-outline">Resume</a>
+        <a class="btn btn-dark" href="#projects">See my work</a>
+        <a class="btn btn-line" href="resume.html">Resume</a>
       </div>
     </div>
+  </section>
 
-    <div class="fi" style="transition-delay:0.1s">
-      <div class="section-nav">
-        <a class="snav-box" href="#education">
-          <div class="snav-name">Education</div>
-          <div class="snav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </a>
-        <a class="snav-box" href="#experience">
-          <div class="snav-name">Experience</div>
-          <div class="snav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </a>
-        <a class="snav-box" href="#projects">
-          <div class="snav-name">Projects</div>
-          <div class="snav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </a>
-        <a class="snav-box" href="#viz">
-          <div class="snav-name">Visualization</div>
-          <div class="snav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </a>
-        <a class="snav-box snav-span2" href="#certifications">
-          <div class="snav-name">Certifications</div>
-          <div class="snav-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </a>
+  <section class="sec" id="projects">
+    <p class="eyebrow fi">Selected work</p>
+    <h2 class="h2 fi">5 Projects</h2>
+    <div class="proj-grid">
+      <a class="pcard c-violet fi" href="project-graph-rag.html">
+        <span class="num">01</span>
+        <h3>Multimodal Graph RAG Assistant</h3>
+        <p>Answers questions over PDFs, images and tables by combining a knowledge graph with vector search.</p>
+        <div class="chips"><span class="chip">Neo4j</span><span class="chip">FAISS</span><span class="chip">GPT-4V</span></div>
+        <span class="more">View project →</span>
+      </a>
+      <a class="pcard c-pink fi" href="project-llm-finetune.html">
+        <span class="num">02</span>
+        <h3>LLM Fine-Tuning &amp; Evaluation Framework</h3>
+        <p>Fine-tunes open-source LLMs with LoRA at 60% less compute and tracks every run.</p>
+        <div class="chips"><span class="chip">Mistral-7B</span><span class="chip">LoRA</span><span class="chip">MLflow</span></div>
+        <span class="more">View project →</span>
+      </a>
+      <a class="pcard c-teal fi" href="project-kayak.html">
+        <span class="num">03</span>
+        <h3>Kayak Agentic Travel Search</h3>
+        <p>Two AI agents turn plain-English travel requests into flight, hotel and car results.</p>
+        <div class="chips"><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">AWS</span></div>
+        <span class="more">View project →</span>
+      </a>
+      <a class="pcard c-blue fi" href="project-airbnb.html">
+        <span class="num">04</span>
+        <h3>Airbnb Clone — Travel Platform</h3>
+        <p>Full-stack booking platform with an AI trip planner, built to handle 5,000 concurrent users.</p>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">LangChain</span></div>
+        <span class="more">View project →</span>
+      </a>
+      <a class="pcard c-amber fi" href="project-asteroid.html">
+        <span class="num">05</span>
+        <h3>Asteroid Analytics</h3>
+        <p>Automated NASA data pipeline and dashboards for tracking near-Earth objects.</p>
+        <div class="chips"><span class="chip">Airflow</span><span class="chip">Snowflake</span><span class="chip">dbt</span></div>
+        <span class="more">View project →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="tiles">
+      <a class="tile tile-exp fi" href="experience.html">
+        <div><div class="t">Experience</div><div class="s">ML Engineer · Data Science · Teaching</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="tile tile-edu fi" href="education.html">
+        <div><div class="t">Education</div><div class="s">M.S. Applied Data Intelligence · SJSU</div></div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="contact fi">
+      <p class="big">Let's build<br>something.</p>
+      <div class="hero-btns" style="margin-top:0">
+        <a class="btn btn-amber" href="mailto:rishivisweswar.boppana@sjsu.edu">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/rishi-boppana/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/rishiboppana" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <hr class="sec-divider">
+</main>
 
-  <!-- ══ EDUCATION ══ -->
-  <div class="sec fi" id="education">
-    <p class="sec-label">Education</p>
-    <div class="edu-list">
-      <div class="edu-item">
-        <div class="edu-degree">M.S. Applied Data Intelligence</div>
-        <div class="edu-school">San Jose State University</div>
-        <div class="edu-meta">Jan 2025 – Present &nbsp;·&nbsp; San Jose, CA</div>
-        <span class="edu-gpa">GPA 3.7 / 4.0</span>
-      </div>
-      <div class="edu-item">
-        <div class="edu-degree">B.Tech. Computer Science</div>
-        <div class="edu-school">Mahindra University</div>
-        <div class="edu-meta">Oct 2020 – Jun 2024 &nbsp;·&nbsp; Hyderabad, India</div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="sec-divider">
-
-  <!-- ══ EXPERIENCE ══ -->
-  <div class="sec fi" id="experience">
-    <p class="sec-label">Experience</p>
-    <div class="exp-list">
-
-      <div class="exp-item">
-        <div class="exp-date">Jun – Aug 2025</div>
-        <div class="exp-content">
-          <div class="exp-title">Machine Learning Engineer</div>
-          <div class="exp-org">Nexed &nbsp;·&nbsp; California, USA</div>
-          <ul class="exp-bullets">
-            <li>Fine-tuned a domain-specific LLM on proprietary product data using LoRA, reducing training time by 18% and significantly improving story output consistency across automated 3–5 cycle review pipelines.</li>
-            <li>Architected agentic writer–reviewer workflows using LangChain and LangGraph, enabling fully autonomous iterative story refinement and cutting manual editing overhead by ~40%.</li>
-            <li>Built an end-to-end AI video generation pipeline integrating story generation, LLM-based quality evaluation, and video synthesis into a single seamless automated system.</li>
-            <li>Integrated Wav2Lip and SadTalker for real-time lip-sync and facial animation, eliminating 35% of post-production work per video and improving final output realism.</li>
-            <li>Evaluated generation quality using automated A/B testing pipelines, iterating on prompt templates and model checkpoints to continuously improve story coherence and factual consistency.</li>
-          </ul>
-          <div class="chip-row">
-            <span class="chip chip-purple">LangChain</span><span class="chip chip-purple">LangGraph</span>
-            <span class="chip chip-purple">LoRA</span><span class="chip chip-gray">Wav2Lip</span><span class="chip chip-gray">MLflow</span><span class="chip chip-gray">Python</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Jun – Aug 2023</div>
-        <div class="exp-content">
-          <div class="exp-title">Data Science Intern</div>
-          <div class="exp-org">Innominds Ltd (Qualcomm POC) &nbsp;·&nbsp; Hyderabad, India</div>
-          <ul class="exp-bullets">
-            <li>Increased LiDAR object detection range by 25% and reduced system latency by 15% by redesigning Python-based sensor processing pipelines for a high-priority Qualcomm proof-of-concept.</li>
-            <li>Developed RANSAC and DBSCAN clustering modules for real-time 3D point cloud segmentation, advancing autonomous vehicle perception under noisy sensor environments.</li>
-            <li>Boosted overall model detection accuracy by 27% through systematic signal filtering, feature engineering, and targeted hyperparameter tuning.</li>
-            <li>Collaborated directly with Qualcomm engineers to align pipeline outputs with hardware constraints, documenting performance benchmarks and presenting results to senior stakeholders.</li>
-          </ul>
-          <div class="chip-row">
-            <span class="chip chip-blue">LiDAR</span><span class="chip chip-blue">Point Cloud</span>
-            <span class="chip chip-gray">DBSCAN</span><span class="chip chip-gray">RANSAC</span><span class="chip chip-gray">Python</span><span class="chip chip-gray">NumPy</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Aug 2025 – Present</div>
-        <div class="exp-content">
-          <div class="exp-title">Instructional Student Assistant</div>
-          <div class="exp-org">San Jose State University &nbsp;·&nbsp; Data 220: Applied Mathematics</div>
-          <ul class="exp-bullets">
-            <li>Supported 45+ graduate students per semester in core topics including Probability, Statistics, and Linear Algebra applied to data science and ML workflows.</li>
-            <li>Designed lab exercises and problem sets that bridge mathematical foundations with practical AI tool usage, reflecting real industry workflows.</li>
-            <li>Held weekly office hours, graded all assignments with detailed feedback, and collaborated with Prof. Jung Suh to update course rubrics aligned with recent advancements in applied mathematics and AI.</li>
-          </ul>
-          <div class="chip-row">
-            <span class="chip chip-orange">Teaching</span><span class="chip chip-gray">Linear Algebra</span><span class="chip chip-gray">Statistics</span><span class="chip chip-gray">Probability</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Jan 2026 – Present</div>
-        <div class="exp-content">
-          <div class="exp-title">Teaching Associate</div>
-          <div class="exp-org">San Jose State University &nbsp;·&nbsp; CMPE 146: Embedded Systems</div>
-          <ul class="exp-bullets">
-            <li>Conducted weekly lab sessions guiding students through hands-on embedded system implementation using microcontroller development boards and sensor modules.</li>
-            <li>Assisted students in debugging low-level C/C++ code and resolving hardware interfacing issues, improving lab completion rates and comprehension of real-time system concepts.</li>
-            <li>Evaluated assignments, provided constructive feedback, and coordinated with Prof. Bhawandeep Harsh to align lab content with industry-relevant embedded design patterns.</li>
-          </ul>
-          <div class="chip-row">
-            <span class="chip chip-orange">Teaching</span><span class="chip chip-gray">Embedded Systems</span><span class="chip chip-gray">C/C++</span><span class="chip chip-gray">Microcontrollers</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <hr class="sec-divider">
-
-  <!-- ══ PROJECTS ══ -->
-  <div class="sec fi" id="projects">
-    <p class="sec-label">Projects</p>
-    <div class="proj-list">
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">Multimodal Graph RAG Assistant</div>
-              <div class="proj-stack">LangChain · FAISS · Neo4j · GPT-4V · CLIP · Gradio</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">2025</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Problem:</strong> Standard vector RAG fails on complex documents where entities and concepts are deeply interconnected — requiring a hybrid retrieval system that combines dense vector search with structured knowledge graph traversal.</li>
-            <li><strong>Graph RAG Architecture:</strong> Integrated Neo4j as a knowledge graph store alongside FAISS vector index — entities and relationships extracted from documents are stored as graph nodes/edges, enabling multi-hop reasoning and relationship-aware retrieval that flat vector search cannot do.</li>
-            <li><strong>Reranking Pipeline:</strong> Added a cross-encoder reranking stage after initial retrieval — candidate passages from both FAISS and Neo4j are scored by a reranker model and fused before being passed to GPT-4, significantly improving answer precision on complex multi-entity queries.</li>
-            <li><strong>Multimodal Layer:</strong> Integrated CLIP for image embedding and GPT-4V for visual question answering, extending retrieval across PDFs, images, and structured tables with consistent accuracy across heterogeneous document types.</li>
-            <li><strong>Deployment:</strong> Deployed as a Gradio web app with real-time multi-turn conversation, source attribution per response, and a retrieval trace panel surfacing which graph paths and vector chunks contributed to each answer.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-blue">LangChain</span><span class="chip chip-blue">FAISS</span><span class="chip chip-purple">Neo4j</span><span class="chip chip-purple">Graph RAG</span><span class="chip chip-blue">GPT-4V</span><span class="chip chip-blue">CLIP</span><span class="chip chip-gray">Reranking</span><span class="chip chip-gray">Gradio</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">LLM Fine-Tuning & Evaluation Framework</div>
-              <div class="proj-stack">Mistral-7B · LLaMA-2 · LoRA · PEFT · MLflow</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">2026</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Goal:</strong> Build a reproducible framework for fine-tuning and evaluating open-source LLMs on domain-specific datasets, enabling systematic comparison of training strategies without requiring full model retraining.</li>
-            <li><strong>Training:</strong> Fine-tuned Mistral-7B and LLaMA-2 on custom domain datasets using LoRA adapters and PEFT — training only a fraction of parameters while preserving base model accuracy, cutting compute by 60% compared to full fine-tuning.</li>
-            <li><strong>Evaluation Pipeline:</strong> Built an automated MLflow-powered evaluation system that tracks every training run, logs BLEU, ROUGE-L, and perplexity metrics per checkpoint, and generates comparison dashboards across fine-tuning configurations.</li>
-            <li><strong>Prompt Engineering Module:</strong> Designed a modular benchmarking suite that systematically tests zero-shot, few-shot, and instruction-tuned prompting across multiple NLP downstream tasks, giving a clear view of where each training strategy wins or fails.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-purple">Mistral-7B</span><span class="chip chip-purple">LLaMA-2</span><span class="chip chip-purple">LoRA</span><span class="chip chip-purple">PEFT</span><span class="chip chip-gray">MLflow</span><span class="chip chip-gray">HuggingFace</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">Kayak Agentic Travel Search — Dual-Agent System</div>
-              <div class="proj-stack">LangGraph · FastAPI · Redis · MongoDB · MySQL · AWS EC2 · Microservices</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">Aug–Sep 2025</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Dual-Agent Design:</strong> Built a two-agent LangGraph architecture — Agent 1 parses natural-language queries into structured intents and constraints using MCP tool-calling; Agent 2 retrieves flights, hotels, and car data from a multi-database backend with Redis caching cutting repeated lookups by ~60%.</li>
-            <li><strong>Microservice Architecture:</strong> Decomposed the backend into independent FastAPI microservices — a Query Service, Search Service, Cache Service, and User Service — each with its own data store: MySQL for structured booking records, MongoDB for unstructured travel content, and Redis for session state and hot-path caching.</li>
-            <li><strong>Distributed Infrastructure:</strong> Deployed all services on AWS EC2 with auto-scaling groups, an Application Load Balancer distributing traffic across instances, and inter-service communication over REST — achieving 99.9% uptime and a 40% reduction in peak server load.</li>
-            <li><strong>Conversational Intelligence:</strong> Implemented multi-turn context tracking and result reranking so users can progressively refine searches (e.g. "make it cheaper", "only direct flights") without re-stating full intent across conversation turns.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-blue">LangGraph</span><span class="chip chip-blue">FastAPI</span><span class="chip chip-green">AWS EC2</span><span class="chip chip-green">Redis</span><span class="chip chip-purple">MongoDB</span><span class="chip chip-gray">MySQL</span><span class="chip chip-gray">Microservices</span><span class="chip chip-gray">MCP</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">Airbnb Clone — Full-Stack Travel Platform</div>
-              <div class="proj-stack">React · Node.js · LangChain · PostgreSQL · MongoDB · Redis · MySQL · AWS · Microservices</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">Oct–Nov 2025</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Microservice Architecture:</strong> Decomposed the platform into independently deployable services — Listing Service (PostgreSQL), Booking Service (MySQL for transactional records), User Service (MongoDB for flexible profile data), and a Session Service (Redis for token caching and real-time availability locking) — each communicating over a RESTful API gateway.</li>
-            <li><strong>Platform:</strong> Built owner and guest dashboards with real-time listing management, availability calendars, and end-to-end booking flows — load-tested with JMeter to sustain 200 req/s and 5,000 concurrent users without degradation.</li>
-            <li><strong>AI Travel Agent:</strong> Integrated an agentic LangChain travel planner that ingests user profiles, booking history, and live location context via Tavily API to generate dynamic real-time itineraries — fully personalized, not template-based.</li>
-            <li><strong>Auth & Performance:</strong> JWT authentication with refresh token rotation, role-based access control, and Redis-backed session caching — tuning critical booking endpoints to under 120ms response time at peak load.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-blue">React</span><span class="chip chip-blue">Node.js</span><span class="chip chip-blue">LangChain</span><span class="chip chip-gray">PostgreSQL</span><span class="chip chip-green">AWS</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">Asteroid Analytics: Near-Earth Object Prediction</div>
-              <div class="proj-stack">Apache Airflow · Snowflake · dbt · Superset</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">2025</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Data Ingestion:</strong> Built an automated pipeline using the NASA NEO API, orchestrated with Apache Airflow DAGs — maintaining a continuously updated 730-day historical dataset in Snowflake with zero manual intervention.</li>
-            <li><strong>ELT Pipeline:</strong> Designed scalable dbt ELT workflows with 4 custom macros for trajectory forecasting transformations, enforcing 100% data quality through comprehensive schema tests, validations, and anomaly detection checks.</li>
-            <li><strong>Experiment Tracking:</strong> Integrated MLflow to version and track all forecasting model experiments, enabling reproducible runs and systematic comparison of prediction accuracy across model iterations.</li>
-            <li><strong>Visualization:</strong> Built 6+ interactive Apache Superset dashboards analyzing asteroid size distributions, velocity profiles, and Earth proximity trends — making complex orbital data accessible and actionable.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-green">Airflow</span><span class="chip chip-green">Snowflake</span><span class="chip chip-gray">dbt</span><span class="chip chip-gray">Superset</span><span class="chip chip-gray">NASA API</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="proj-item">
-        <div class="proj-header" onclick="toggleProj(this)">
-          <div class="proj-left">
-            <span class="proj-dot"></span>
-            <div>
-              <div class="proj-name">Context-Based Chat Platform</div>
-              <div class="proj-stack">React · Kafka · Redis · AWS EC2 · Microservices</div>
-            </div>
-          </div>
-          <div class="proj-right">
-            <span class="proj-year">Aug–Sep 2025</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="proj-body"><div class="proj-body-inner">
-          <ul class="proj-bullets">
-            <li><strong>Frontend:</strong> Built an intuitive React.js chat interface with real-time message updates, smooth context-based rendering, and persistent conversation threads — designed to feel instant even under high message volume.</li>
-            <li><strong>Messaging Infrastructure:</strong> Deployed an Apache Kafka backend for event-driven message delivery with Redis caching for session state and recent message history — achieving sub-100ms end-to-end message processing at scale.</li>
-            <li><strong>Cloud Architecture:</strong> Configured AWS EC2 microservices with autoscaling policies and a load balancer distributing traffic across instances — sustaining 99.9% availability and reducing peak server load by 40% versus a monolithic baseline.</li>
-          </ul>
-          <div class="proj-footer">
-            <div class="chip-row"><span class="chip chip-blue">React</span><span class="chip chip-green">Kafka</span><span class="chip chip-green">Redis</span><span class="chip chip-green">AWS EC2</span><span class="chip chip-gray">Microservices</span></div>
-            <a href="https://github.com/rishiboppana" class="gh-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-          </div>
-        </div></div>
-      </div>
-
-    </div>
-  </div>
-
-  <hr class="sec-divider">
-
-  <!-- ══ VISUALIZATION ══ -->
-  <div class="sec fi" id="viz">
-    <p class="sec-label">Visualization & Analytics</p>
-    <div class="viz-wrap">
-      <div>
-        <div class="viz-title">TB Burden Countries Dashboard</div>
-        <p class="viz-desc">Interactive Tableau dashboard analyzing global tuberculosis burden across 200+ countries — surfacing public health patterns through multi-view visual analytics.</p>
-        <ul class="viz-bullets">
-          <li>Choropleth world maps for estimated TB deaths (HIV+ and HIV−)</li>
-          <li>Bar charts of highest HIV incidence rates by country (1990–2014)</li>
-          <li>Regional case detection trend lines and bubble chart for prevalence methods</li>
-          <li>Year and region filters for granular drill-down across all views</li>
-        </ul>
-        <div class="chip-row">
-          <span class="chip chip-blue">Tableau</span>
-          <span class="chip chip-gray">Data Visualization</span>
-          <span class="chip chip-gray">Public Health Analytics</span>
-          <span class="chip chip-gray">Choropleth Maps</span>
-        </div>
-        <div style="margin-top:1.2rem;">
-          <a href="https://public.tableau.com/shared/Z5XDQ36WS" target="_blank" class="btn btn-solid" style="font-size:0.9rem;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Open Live Dashboard
-          </a>
-        </div>
-      </div>
-      <div class="tableau-frame-wrap">
-        <iframe
-          src="https://public.tableau.com/shared/Z5XDQ36WS?:embed=y&:display_count=n&:showVizHome=no&:toolbar=no"
-          allowfullscreen
-          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-        ></iframe>
-        <div class="tableau-overlay">
-          <span class="tableau-label">TB_Burden_Countries &nbsp;·&nbsp; Tableau Public</span>
-          <a class="tableau-open" href="https://public.tableau.com/shared/Z5XDQ36WS" target="_blank">
-            Open full view
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="sec-divider">
-
-  <!-- ══ CERTIFICATIONS ══ -->
-  <div class="sec fi" id="certifications">
-    <p class="sec-label">Certifications</p>
-    <div class="cert-list">
-      <div class="cert-item">
-        <div class="cert-icon">☁</div>
-        <div>
-          <div class="cert-name">AWS Certified Cloud Practitioner</div>
-          <div class="cert-issuer">Amazon Web Services</div>
-        </div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-icon">ML</div>
-        <div>
-          <div class="cert-name">Supervised & Unsupervised Learning</div>
-          <div class="cert-issuer">Coursera &nbsp;·&nbsp; Machine Learning Specialization</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="sec-divider">
-
-  <!-- ══ CONTACT ══ -->
-  <div class="sec fi">
-    <div class="contact-wrap">
-      <div>
-        <div style="font-size:0.95rem; color:var(--accent); font-weight:600;">rishivisweswar.boppana@sjsu.edu</div>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:rishivisweswar.boppana@sjsu.edu" class="contact-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Email
-        </a>
-        <a href="https://www.linkedin.com/in/rishi-boppana/" target="_blank" rel="noopener noreferrer" class="contact-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/rishiboppana" target="_blank" class="contact-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="resume.html" class="contact-btn" style="background:var(--accent);color:#fff;border-color:var(--accent);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Resume
-        </a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<footer>© 2026 Rishi Visweswar Boppana &nbsp;·&nbsp; San Jose, CA</footer>
-
-<script>
-  function toggleProj(header) { header.closest('.proj-item').classList.toggle('open'); }
-  const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('vis'); io.unobserve(x.target); } }), { threshold: 0.07 });
-  document.querySelectorAll('.fi').forEach(el => io.observe(el));
-</script>
+<script src="site.js"></script>
 </body>
 </html>

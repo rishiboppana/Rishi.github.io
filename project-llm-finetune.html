@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Fine-Tuning &amp; Evaluation Framework · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-pink">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 02 · 2026</p>
+    <h1 class="big">LLM Fine-Tuning &amp; Evaluation Framework</h1>
+    <p class="lead">A reproducible way to fine-tune and compare open-source LLMs without retraining the whole model.</p>
+    <div class="chips"><span class="chip">Mistral-7B</span><span class="chip">LLaMA-2</span><span class="chip">LoRA</span><span class="chip">PEFT</span><span class="chip">MLflow</span><span class="chip">HuggingFace</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>Goal</h3><p>Systematically compare fine-tuning strategies for open-source LLMs on domain-specific datasets.</p></div>
+      <div class="block fi"><h3>Training</h3><p>Fine-tuned Mistral-7B and LLaMA-2 with LoRA adapters and PEFT, training a fraction of the parameters and cutting compute by 60% versus full fine-tuning.</p></div>
+      <div class="block fi"><h3>Evaluation pipeline</h3><p>MLflow tracks every run and logs BLEU, ROUGE-L and perplexity per checkpoint, with comparison dashboards across configurations.</p></div>
+      <div class="block fi"><h3>Prompt benchmarking</h3><p>A modular suite tests zero-shot, few-shot and instruction-tuned prompting across NLP tasks, showing where each strategy wins or fails.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-graph-rag.html">← Multimodal Graph RAG Assistant</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-kayak.html">Kayak Agentic Travel Search →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asteroid Analytics: Near-Earth Object Prediction · Rishi Visweswar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap c-amber">
+  <section class="page-head">
+    <a class="back" href="index.html#projects">← All projects</a>
+    <p class="eyebrow" style="color:var(--c)">Project 05 · 2025</p>
+    <h1 class="big">Asteroid Analytics: Near-Earth Object Prediction</h1>
+    <p class="lead">An always-up-to-date pipeline that turns NASA asteroid data into clear, explorable dashboards.</p>
+    <div class="chips"><span class="chip">Apache Airflow</span><span class="chip">Snowflake</span><span class="chip">dbt</span><span class="chip">MLflow</span><span class="chip">Superset</span><span class="chip">NASA API</span></div>
+  </section>
+  <section class="sec" style="padding-top:1rem">
+    <div class="blocks">
+      <div class="block fi"><h3>Data ingestion</h3><p>Airflow DAGs pull from the NASA NEO API to keep a 730-day history in Snowflake with zero manual work.</p></div>
+      <div class="block fi"><h3>ELT pipeline</h3><p>dbt workflows with 4 custom macros for trajectory forecasting, with schema tests, validations and anomaly checks enforcing data quality.</p></div>
+      <div class="block fi"><h3>Experiment tracking</h3><p>MLflow versions every forecasting experiment for reproducible runs and model comparison.</p></div>
+      <div class="block fi"><h3>Visualization</h3><p>6+ Apache Superset dashboards on asteroid size, velocity and Earth-proximity trends.</p></div>
+    </div>
+    <div class="next-row">
+      <a class="btn btn-line" href="project-airbnb.html">← Airbnb Clone</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-graph-rag.html">Multimodal Graph RAG Assistant →</a>
+    </div>
+  </section>
+</main>
+<script src="site.js"></script>
+</body>
+</html>
