@@ -10,13 +10,13 @@
     ['resume.html', 'Resume'],
   ];
   const nav = links.map(([href, label]) =>
-    `<a href="${href}"${href === section ? ' class="active" aria-current="page"' : ''}>${label}</a>`).join('');
+    `<a href="${href}"${href === section ? ' class="active" aria-current="page"' : ''}${href === 'resume.html' ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`).join('');
 
   const head = document.createElement('header');
   head.className = 'site-head';
   head.innerHTML =
     `<nav class="pill" aria-label="Main">${nav}` +
-    `<a class="cta" href="mailto:rishivisweswar.boppana@sjsu.edu"><span class="dot"></span><span class="cta-text">Contact</span></a></nav>` +
+    `<a class="cta" href="${page === 'index.html' ? '#contact' : 'index.html#contact'}"><span class="dot"></span><span class="cta-text">Contact</span></a></nav>` +
     `<a class="brand" href="index.html">Rishi <span>Visweswar</span></a>`;
   document.body.prepend(head);
 

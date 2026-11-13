@@ -147,7 +147,7 @@ img { max-width: 100%; }
 .tile-edu { background: linear-gradient(135deg, var(--sky), var(--blue)); }
 
 /* ── Contact (same fonts, cards and colours as the rest of the page) ── */
-.connect { padding: 3rem 0 4rem; }
+.connect { padding: 3rem 0 4rem; scroll-margin-top: 30px; }
 .connect .h2 { margin-bottom: 1rem; }
 .c-text { max-width: 44rem; color: var(--sub); margin-bottom: 2rem; }
 .c-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
