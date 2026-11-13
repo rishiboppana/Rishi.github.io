@@ -3,32 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asteroid Analytics: Near-Earth Object Prediction · Rishi Visweswar</title>
+  <title>Asteroid Analysis Data Warehouse · Rishi Visweswar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<main class="wrap c-gold">
+<main class="wrap c-sky">
   <section class="page-head">
     <a class="back" href="index.html#projects">← All projects</a>
-    <p class="eyebrow" style="color:var(--c)">Project 05 · 2025</p>
-    <h1 class="big">Asteroid Analytics: Near-Earth Object Prediction</h1>
+    <p class="eyebrow" style="color:var(--c)">Project 06 · May 2025</p>
+    <h1 class="big">Asteroid Analysis Data Warehouse</h1>
     <p class="lead">An always-up-to-date pipeline that turns NASA asteroid data into clear, explorable dashboards.</p>
-    <div class="chips"><span class="chip">Apache Airflow</span><span class="chip">Snowflake</span><span class="chip">dbt</span><span class="chip">MLflow</span><span class="chip">Superset</span><span class="chip">NASA API</span></div>
+    <div class="stats"><div class="stat"><b>730</b><span>days of history</span></div><div class="stat"><b>4</b><span>custom dbt macros</span></div><div class="stat"><b>6+</b><span>Superset dashboards</span></div></div>
   </section>
-  <section class="sec" style="padding-top:1rem">
-    <div class="blocks">
-      <div class="block fi"><h3>Data ingestion</h3><p>Airflow DAGs pull from the NASA NEO API to keep a 730-day history in Snowflake with zero manual work.</p></div>
-      <div class="block fi"><h3>ELT pipeline</h3><p>dbt workflows with 4 custom macros for trajectory forecasting, with schema tests, validations and anomaly checks enforcing data quality.</p></div>
-      <div class="block fi"><h3>Experiment tracking</h3><p>MLflow versions every forecasting experiment for reproducible runs and model comparison.</p></div>
-      <div class="block fi"><h3>Visualization</h3><p>6+ Apache Superset dashboards on asteroid size, velocity and Earth-proximity trends.</p></div>
-    </div>
+  <section class="sec tight">
+    <h2 class="sec-h">How it looks</h2>
+    <a class="arch-img" href="img/asteroid-home.png" target="_blank" rel="noopener"><img src="img/asteroid-home.png" alt="Asteroid Monitoring Dashboard in Apache Superset" loading="lazy" /></a>
+    <p class="arch-note">Click the image to open it full size.</p>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">Architecture</h2>
+    <div class="diagram"><div class="flow"><div class="stage"><small>Source</small><div class="node"><b>NASA NEO API</b><span>near-Earth objects</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Orchestrate</small><div class="node"><b>Apache Airflow</b><span>scheduled DAGs</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Warehouse</small><div class="node"><b>Snowflake</b><span>730-day history</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Transform</small><div class="node"><b>dbt ELT</b><span>4 custom macros · schema tests</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Model</small><div class="node"><b>Forecasting</b><span>runs tracked in MLflow</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Serve</small><div class="node"><b>Apache Superset</b><span>6+ dashboards</span></div></div></div></div>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">How it works</h2>
+    <ol class="steps"><li class="step"><div><h3>Data ingestion</h3><p>Airflow DAGs pull from the NASA NEO API to keep a 730-day history in Snowflake with zero manual work.</p></div></li><li class="step"><div><h3>ELT pipeline</h3><p>dbt workflows with 4 custom macros for trajectory forecasting, with schema tests, validations and anomaly checks enforcing data quality.</p></div></li><li class="step"><div><h3>Experiment tracking</h3><p>MLflow versions every forecasting experiment for reproducible runs and model comparison.</p></div></li><li class="step"><div><h3>Visualization</h3><p>6+ Apache Superset dashboards on asteroid size, velocity and Earth-proximity trends.</p></div></li></ol>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">Tech stack</h2>
+    <div class="stack"><div class="stack-g"><small>Source</small><div class="chips"><span class=chip>NASA NEO API</span></div></div><div class="stack-g"><small>Orchestration</small><div class="chips"><span class=chip>Apache Airflow</span></div></div><div class="stack-g"><small>Warehouse</small><div class="chips"><span class=chip>Snowflake</span></div></div><div class="stack-g"><small>Transform</small><div class="chips"><span class=chip>dbt</span></div></div><div class="stack-g"><small>ML tracking</small><div class="chips"><span class=chip>MLflow</span></div></div><div class="stack-g"><small>BI</small><div class="chips"><span class=chip>Apache Superset</span></div></div></div>
     <div class="next-row">
-      <a class="btn btn-line" href="project-airbnb.html">← Airbnb Clone</a>
-      <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn btn-line" href="project-plantlens.html">PlantLens →</a>
+      <a class="btn btn-line" href="project-kayak.html">← Kayak Agentic Travel Search</a>
+      <a class="btn btn-dark" href="https://github.com/rishiboppana/Astroid_Analysis_Datawarehouse" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn btn-line" href="project-graph-rag.html">Multimodal Graph RAG Assistant →</a>
     </div>
   </section>
 </main>

@@ -6,30 +6,35 @@
   <title>Multimodal Graph RAG Assistant · Rishi Visweswar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <main class="wrap c-blue">
   <section class="page-head">
     <a class="back" href="index.html#projects">← All projects</a>
-    <p class="eyebrow" style="color:var(--c)">Project 01 · 2025</p>
+    <p class="eyebrow" style="color:var(--c)">Project 07 · 2025</p>
     <h1 class="big">Multimodal Graph RAG Assistant</h1>
     <p class="lead">A question-answering assistant that understands how ideas in a document connect, not just which words match.</p>
-    <div class="chips"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Neo4j</span><span class="chip">GPT-4V</span><span class="chip">CLIP</span><span class="chip">Reranking</span><span class="chip">Gradio</span></div>
+    <div class="stats"><div class="stat"><b>2</b><span>retrieval engines, fused</span></div><div class="stat"><b>3</b><span>document types: PDF, image, table</span></div></div>
   </section>
-  <section class="sec" style="padding-top:1rem">
-    <div class="blocks">
-      <div class="block fi"><h3>The problem</h3><p>Standard vector RAG fails on complex documents where entities and concepts are deeply interconnected. It needed hybrid retrieval: dense vector search plus structured knowledge-graph traversal.</p></div>
-      <div class="block fi"><h3>Graph RAG architecture</h3><p>Neo4j stores entities and relationships extracted from documents alongside a FAISS vector index, enabling multi-hop reasoning and relationship-aware retrieval that flat vector search cannot do.</p></div>
-      <div class="block fi"><h3>Reranking pipeline</h3><p>Candidates from FAISS and Neo4j are scored by a cross-encoder reranker and fused before reaching GPT-4, significantly improving precision on complex multi-entity queries.</p></div>
-      <div class="block fi"><h3>Multimodal layer</h3><p>CLIP image embeddings and GPT-4V visual question answering extend retrieval across PDFs, images and tables.</p></div>
-      <div class="block fi"><h3>Deployment</h3><p>A Gradio web app with multi-turn conversation, source attribution per answer, and a trace panel showing which graph paths and vector chunks contributed.</p></div>
-    </div>
+  <section class="sec tight">
+    <h2 class="sec-h">Architecture</h2>
+    <div class="diagram"><div class="flow"><div class="stage"><small>Documents</small><div class="node"><b>PDFs, images, tables</b></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Index</small><div class="node"><b>Neo4j</b><span>entities + relationships</span></div><div class="node"><b>FAISS</b><span>text vectors</span></div><div class="node"><b>CLIP</b><span>image embeddings</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Retrieve</small><div class="node"><b>Vector search</b><span>FAISS</span></div><div class="node"><b>Graph traversal</b><span>multi-hop in Neo4j</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Rerank</small><div class="node"><b>Cross-encoder</b><span>scores and fuses candidates</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Answer</small><div class="node"><b>GPT-4 / GPT-4V</b><span>via LangChain</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>App</small><div class="node"><b>Gradio chat</b><span>sources + retrieval trace</span></div></div></div></div>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">How it works</h2>
+    <ol class="steps"><li class="step"><div><h3>The problem</h3><p>Standard vector RAG fails on complex documents where entities and concepts are deeply interconnected. It needed hybrid retrieval: dense vector search plus structured knowledge-graph traversal.</p></div></li><li class="step"><div><h3>Graph RAG architecture</h3><p>Neo4j stores entities and relationships extracted from documents alongside a FAISS vector index, enabling multi-hop reasoning and relationship-aware retrieval that flat vector search cannot do.</p></div></li><li class="step"><div><h3>Reranking pipeline</h3><p>Candidates from FAISS and Neo4j are scored by a cross-encoder reranker and fused before reaching GPT-4, significantly improving precision on complex multi-entity queries.</p></div></li><li class="step"><div><h3>Multimodal layer</h3><p>CLIP image embeddings and GPT-4V visual question answering extend retrieval across PDFs, images and tables.</p></div></li><li class="step"><div><h3>Deployment</h3><p>A Gradio web app with multi-turn conversation, source attribution per answer, and a trace panel showing which graph paths and vector chunks contributed.</p></div></li></ol>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">Tech stack</h2>
+    <div class="stack"><div class="stack-g"><small>Retrieval</small><div class="chips"><span class=chip>Neo4j</span><span class=chip>FAISS</span><span class=chip>Cross-encoder reranker</span></div></div><div class="stack-g"><small>Models</small><div class="chips"><span class=chip>GPT-4</span><span class=chip>GPT-4V</span><span class=chip>CLIP</span></div></div><div class="stack-g"><small>Orchestration</small><div class="chips"><span class=chip>LangChain</span></div></div><div class="stack-g"><small>App</small><div class="chips"><span class=chip>Gradio</span></div></div></div>
     <div class="next-row">
-      <a class="btn btn-line" href="project-gridflex.html">← GridFlex</a>
+      <a class="btn btn-line" href="project-asteroid.html">← Asteroid Analysis Data Warehouse</a>
       <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn btn-line" href="project-llm-finetune.html">LLM Fine-Tuning &amp; Evaluation Framework →</a>
+      <a class="btn btn-line" href="project-gridflex.html">Clean Energy →</a>
     </div>
   </section>
 </main>

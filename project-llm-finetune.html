@@ -6,29 +6,35 @@
   <title>LLM Fine-Tuning &amp; Evaluation Framework · Rishi Visweswar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<main class="wrap c-gold">
+<main class="wrap c-sky">
   <section class="page-head">
     <a class="back" href="index.html#projects">← All projects</a>
-    <p class="eyebrow" style="color:var(--c)">Project 02 · 2026</p>
+    <p class="eyebrow" style="color:var(--c)">Project 03 · 2026</p>
     <h1 class="big">LLM Fine-Tuning &amp; Evaluation Framework</h1>
     <p class="lead">A reproducible way to fine-tune and compare open-source LLMs without retraining the whole model.</p>
-    <div class="chips"><span class="chip">Mistral-7B</span><span class="chip">LLaMA-2</span><span class="chip">LoRA</span><span class="chip">PEFT</span><span class="chip">MLflow</span><span class="chip">HuggingFace</span></div>
+    <div class="stats"><div class="stat"><b>60%</b><span>less compute than full fine-tuning</span></div></div>
   </section>
-  <section class="sec" style="padding-top:1rem">
-    <div class="blocks">
-      <div class="block fi"><h3>Goal</h3><p>Systematically compare fine-tuning strategies for open-source LLMs on domain-specific datasets.</p></div>
-      <div class="block fi"><h3>Training</h3><p>Fine-tuned Mistral-7B and LLaMA-2 with LoRA adapters and PEFT, training a fraction of the parameters and cutting compute by 60% versus full fine-tuning.</p></div>
-      <div class="block fi"><h3>Evaluation pipeline</h3><p>MLflow tracks every run and logs BLEU, ROUGE-L and perplexity per checkpoint, with comparison dashboards across configurations.</p></div>
-      <div class="block fi"><h3>Prompt benchmarking</h3><p>A modular suite tests zero-shot, few-shot and instruction-tuned prompting across NLP tasks, showing where each strategy wins or fails.</p></div>
-    </div>
+  <section class="sec tight">
+    <h2 class="sec-h">Architecture</h2>
+    <div class="diagram"><div class="flow"><div class="stage"><small>Data</small><div class="node"><b>Domain dataset</b><span>custom, task-specific</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Train</small><div class="node"><b>LoRA + PEFT</b><span>Mistral-7B, LLaMA-2</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Checkpoints</small><div class="node"><b>One per run</b><span>each configuration</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Evaluate</small><div class="node"><b>Metrics</b><span>BLEU · ROUGE-L · perplexity</span></div><div class="node"><b>Prompt suite</b><span>zero-shot · few-shot · instruction-tuned</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="stage"><small>Track</small><div class="node"><b>MLflow</b><span>runs + comparison dashboards</span></div></div></div></div>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">How it works</h2>
+    <ol class="steps"><li class="step"><div><h3>Goal</h3><p>Systematically compare fine-tuning strategies for open-source LLMs on domain-specific datasets.</p></div></li><li class="step"><div><h3>Training</h3><p>Fine-tuned Mistral-7B and LLaMA-2 with LoRA adapters and PEFT, training a fraction of the parameters and cutting compute by 60% versus full fine-tuning.</p></div></li><li class="step"><div><h3>Evaluation pipeline</h3><p>MLflow tracks every run and logs BLEU, ROUGE-L and perplexity per checkpoint, with comparison dashboards across configurations.</p></div></li><li class="step"><div><h3>Prompt benchmarking</h3><p>A modular suite tests zero-shot, few-shot and instruction-tuned prompting across NLP tasks, showing where each strategy wins or fails.</p></div></li></ol>
+  </section>
+
+  <section class="sec tight">
+    <h2 class="sec-h">Tech stack</h2>
+    <div class="stack"><div class="stack-g"><small>Models</small><div class="chips"><span class=chip>Mistral-7B</span><span class=chip>LLaMA-2</span></div></div><div class="stack-g"><small>Training</small><div class="chips"><span class=chip>LoRA</span><span class=chip>PEFT</span><span class=chip>HuggingFace</span></div></div><div class="stack-g"><small>Tracking</small><div class="chips"><span class=chip>MLflow</span></div></div><div class="stack-g"><small>Metrics</small><div class="chips"><span class=chip>BLEU</span><span class=chip>ROUGE-L</span><span class=chip>Perplexity</span></div></div></div>
     <div class="next-row">
-      <a class="btn btn-line" href="project-graph-rag.html">← Multimodal Graph RAG Assistant</a>
+      <a class="btn btn-line" href="project-plantlens.html">← PlantHelp</a>
       <a class="btn btn-dark" href="https://github.com/rishiboppana" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn btn-line" href="project-kayak.html">Kayak Agentic Travel Search →</a>
+      <a class="btn btn-line" href="project-airbnb.html">Airbnb Clone →</a>
     </div>
   </section>
 </main>

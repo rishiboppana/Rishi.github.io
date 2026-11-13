@@ -6,14 +6,14 @@
   <title>Experience · Rishi Visweswar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <main class="wrap">
   <section class="page-head">
     <a class="back" href="index.html">← Home</a>
-    <p class="eyebrow" style="color:var(--green)">Where I've worked</p>
+    <p class="eyebrow" style="color:var(--sky)">Where I've worked</p>
     <h1 class="big">Experience</h1>
   </section>
 
@@ -21,57 +21,98 @@
     <div class="tl">
 
       <article class="role c-blue fi">
+        <div class="when">Jul – Sep 2026</div>
+        <div>
+          <h3>Research Assistant <span class="pill-tag">Fine-tuning</span></h3>
+          <p class="org">SJSU Research Foundation · San Jose, CA</p>
+          <p class="summary">I taught AI models to write clear, accurate patent titles from long patent abstracts, then tested which model did best.</p>
+          <div class="stats"><div class="stat"><b>80%</b><span>best improvement over reference titles</span></div><div class="stat"><b>6,700</b><span>patent records used for training</span></div></div>
+          <ul>
+            <li>Developed an AI-powered patent title generation system that turns complex patent abstracts into concise, technically accurate titles aligned with DWPI standards.</li>
+            <li>Fine-tuned Qwen, Llama, DeepSeek and T5 on 6,700 patent records using full fine-tuning (FFT), LoRA and 4-bit QLoRA; an automated LLM-as-a-Judge workflow on a 100-patent test set showed up to 80% improvement and preference over reference titles.</li>
+          </ul>
+          <div class="chips"><span class="chip">Qwen</span><span class="chip">Llama</span><span class="chip">DeepSeek</span><span class="chip">T5</span><span class="chip">LoRA</span><span class="chip">QLoRA</span><span class="chip">LLM-as-a-Judge</span></div>
+        </div>
+      </article>
+
+      <article class="role c-gold fi">
         <div class="when">Jan 2026 – Present</div>
         <div>
           <h3>Teaching Associate</h3>
           <p class="org">San Jose State University · CMPE 146: Embedded Systems</p>
+          <p class="summary">I help students learn embedded systems by building and debugging real hardware in the lab.</p>
+          
           <ul>
             <li>Run weekly lab sessions guiding students through hands-on embedded systems with microcontroller boards and sensor modules.</li>
             <li>Help students debug low-level C/C++ and hardware interfacing issues, improving lab completion and understanding of real-time systems.</li>
             <li>Grade assignments with feedback and work with Prof. Bhawandeep Harsh to align labs with industry design patterns.</li>
           </ul>
+          <div class="chips"><span class="chip">Embedded Systems</span><span class="chip">C/C++</span><span class="chip">Microcontrollers</span><span class="chip">Teaching</span></div>
         </div>
       </article>
 
-      <article class="role c-gold fi">
+      <article class="role c-sky fi">
         <div class="when">Aug 2025 – Present</div>
         <div>
           <h3>Instructional Student Assistant</h3>
           <p class="org">San Jose State University · Data 220: Applied Mathematics</p>
+          <p class="summary">I help graduate students get comfortable with the math behind data science and machine learning.</p>
+          <div class="stats"><div class="stat"><b>45+</b><span>graduate students each semester</span></div></div>
           <ul>
             <li>Support 45+ graduate students per semester in Probability, Statistics and Linear Algebra for data science and ML.</li>
             <li>Design lab exercises that connect math foundations with practical AI tools.</li>
             <li>Hold weekly office hours and work with Prof. Jung Suh to update course rubrics.</li>
           </ul>
-        </div>
-      </article>
-
-      <article class="role c-green fi">
-        <div class="when">Jun – Aug 2025</div>
-        <div>
-          <h3>Machine Learning Engineer</h3>
-          <p class="org">Nexed · California, USA</p>
-          <ul>
-            <li>Fine-tuned a domain-specific LLM with LoRA, cutting training time 18% and improving story consistency across automated review cycles.</li>
-            <li>Built agentic writer–reviewer workflows in LangChain and LangGraph, cutting manual editing by ~40%.</li>
-            <li>Created an end-to-end AI video pipeline linking story generation, LLM quality checks and video synthesis.</li>
-            <li>Integrated Wav2Lip and SadTalker for lip-sync and facial animation, removing 35% of post-production work per video.</li>
-            <li>Ran automated A/B tests on prompts and checkpoints to keep improving coherence and factual consistency.</li>
-          </ul>
+          <div class="chips"><span class="chip">Linear Algebra</span><span class="chip">Statistics</span><span class="chip">Probability</span><span class="chip">Teaching</span></div>
         </div>
       </article>
 
       <article class="role c-blue fi">
+        <div class="when">Jun – Aug 2025</div>
+        <div>
+          <h3>Student Research Assistant <span class="pill-tag">Agentic Workflow</span></h3>
+          <p class="org">San José State University · San Jose, CA</p>
+          <p class="summary">I built a team of AI agents that edits videos by finding the best moments automatically.</p>
+          <div class="stats"><div class="stat"><b>78%</b><span>less manual editing</span></div><div class="stat"><b>2.3×</b><span>higher throughput</span></div><div class="stat"><b>97.5%</b><span>job success</span></div></div>
+          <ul>
+            <li>Architected a 5-agent AI video editing system using Python, LangGraph, Llama 3.2, LLaVA, Whisper and FFmpeg, automating multimodal analysis and highlight generation to reduce manual editing effort by 78% across 50 videos.</li>
+            <li>Built asynchronous FastAPI services with Celery and Redis for parallel agent execution, task scheduling and caching, supporting 20 concurrent jobs with 2.3× higher throughput.</li>
+            <li>Developed a multimodal ranking pipeline using CLIP embeddings, speech transcripts and LLM relevance scoring, improving highlight-selection Precision@5 from 0.64 to 0.77 across 200 annotated samples.</li>
+            <li>Deployed containerized services on AWS (EC2, S3, CloudWatch) using Docker, GitHub Actions, pytest and OpenAI Codex-assisted development, achieving 97.5% job success and 34% lower p95 latency.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">Llama 3.2</span><span class="chip">LLaVA</span><span class="chip">Whisper</span><span class="chip">FFmpeg</span><span class="chip">FastAPI</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">CLIP</span><span class="chip">AWS</span><span class="chip">Docker</span></div>
+        </div>
+      </article>
+
+      <article class="role c-gold fi">
+        <div class="when">Aug – Dec 2024</div>
+        <div>
+          <h3>Software Engineer – Backend</h3>
+          <p class="org">Narkha LLP · Bangalore, India</p>
+          <p class="summary">I built the behind-the-scenes services that track and report financial transactions reliably.</p>
+          <div class="stats"><div class="stat"><b>100K+</b><span>records handled monthly</span></div><div class="stat"><b>30%</b><span>faster reports</span></div></div>
+          <ul>
+            <li>Developed and maintained RESTful APIs using Python, FastAPI, PostgreSQL and SQLAlchemy for financial transaction tracking and reporting, implementing JWT authentication, input validation and role-based access control.</li>
+            <li>Built asynchronous data-processing workflows using Celery and Redis, handling 100K+ financial records monthly with automated retries, transaction deduplication and error logging to improve processing reliability.</li>
+            <li>Optimized PostgreSQL queries through indexing, SQL query tuning and pagination, reducing report generation latency by 30% and improving API performance for transaction history and financial summaries.</li>
+            <li>Supported backend deployment using Docker and AWS EC2, implementing unit and integration tests with pytest, GitHub Actions CI/CD and application logging to streamline releases and troubleshooting.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">AWS EC2</span><span class="chip">pytest</span></div>
+        </div>
+      </article>
+
+      <article class="role c-sky fi">
         <div class="when">Jun – Aug 2023</div>
         <div>
           <h3>Data Science Intern</h3>
-          <p class="org">Innominds Ltd (Qualcomm POC) · Hyderabad, India</p>
+          <p class="org">Innominds Ltd · Hyderabad, India</p>
+          <p class="summary">I helped a self-driving car&#x27;s 3D sensor (LiDAR) see farther and faster, for a Qualcomm proof of concept.</p>
+          <div class="stats"><div class="stat"><b>25%</b><span>longer detection range</span></div><div class="stat"><b>15%</b><span>lower latency</span></div><div class="stat"><b>27%</b><span>better accuracy</span></div></div>
           <ul>
-            <li>Increased LiDAR detection range 25% and cut latency 15% by redesigning Python sensor-processing pipelines.</li>
-            <li>Built RANSAC and DBSCAN modules for real-time 3D point-cloud segmentation in noisy conditions.</li>
-            <li>Raised detection accuracy 27% through signal filtering, feature engineering and hyperparameter tuning.</li>
-            <li>Worked directly with Qualcomm engineers on hardware constraints and presented benchmarks to senior stakeholders.</li>
+            <li>Redesigned a Python LiDAR pipeline for a Qualcomm autonomous-vehicle PoC using RANSAC ground-plane segmentation and DBSCAN clustering (Open3D, PCL), extending detection range 25% and cutting latency 15%.</li>
+            <li>Improved object detection accuracy by 27% through point-cloud filtering, feature engineering and hyperparameter tuning.</li>
           </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">LiDAR</span><span class="chip">RANSAC</span><span class="chip">DBSCAN</span><span class="chip">Open3D</span><span class="chip">PCL</span></div>
         </div>
       </article>
 
